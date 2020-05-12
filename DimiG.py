@@ -4,8 +4,9 @@ from collections import Counter
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm, grid_search
 import numpy as np
+# 新增networkx库
 import networkx as nx
-#
+# 忽略divide错误和invalid错误 （Author:hfp）
 np.seterr(divide='ignore', invalid='ignore')
 import pdb
 from sklearn.metrics import roc_curve, auc, roc_auc_score
