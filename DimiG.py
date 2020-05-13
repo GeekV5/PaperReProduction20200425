@@ -4,9 +4,7 @@ from collections import Counter
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm, grid_search
 import numpy as np
-# 新增networkx库
 import networkx as nx
-# 忽略divide错误和invalid错误 （Author:hfp）
 np.seterr(divide='ignore', invalid='ignore')
 import pdb
 from sklearn.metrics import roc_curve, auc, roc_auc_score
@@ -1702,13 +1700,10 @@ def run_gcn():
     print adj.shape, features.shape, labels.shape, idx_train.shape, idx_val.shape, idx_test.shape
     # pdb.set_trace()
     # Model and optimizer
-    # np.random.seed()的作用是设置随机数种子
     np.random.seed(0)
-    # 为CPU设置种子用于生成随机数，以使得结果是确定的
     torch.manual_seed(0)
     cuda = False
     if cuda:
-        # 为当前GPU设置随机种子；如果使用多个GPU，应该使用torch.cuda.manual_seed_all()为所有的GPU设置种子。
         torch.cuda.manual_seed(0)
     # pdb.set_trace()
     num_dis = len(all_dis)
@@ -1741,5 +1736,5 @@ def run_gcn():
     test(model, features, adj, labels, idx_test, all_dis, new_mirna_disease, disease_miRNA_data, criterion)
 
 
-if __name__ == '__main__':
-    run_gcn()
+# if __name__ == '__main__':
+run_gcn()
